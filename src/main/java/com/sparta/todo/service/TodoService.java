@@ -39,7 +39,7 @@ public class TodoService {
     @Transactional
     public void deleteTodo(Long todoId) {
 
-        if(todoRepository.existsById(todoId)){
+        if(!todoRepository.existsById(todoId)){
             throw new NullPointerException("NULL 값이 들어왔습니다.");
         }
         todoRepository.deleteById(todoId);

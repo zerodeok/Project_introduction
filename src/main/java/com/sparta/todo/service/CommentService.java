@@ -53,4 +53,21 @@ public class CommentService {
         return new CommentDetailResponseDto(comment);
 
     }
+
+    //댓글 수정
+    @Transactional
+    public CommentUpdateResponseDto updateComments(Long commentId, CommentUpdateRequestDto commentUpdateRequestDto) {
+        Comment updateComment = commentRepository.findById(commentId).orElseThrow(() -> new NullPointerException("댓글이 존재하지 않습니다."));
+        updateComment.update(commentUpdateRequestDto);
+
+        return new CommentUpdateResponseDto(updateComment);
+    }
+
+    @Transactional
+    public void deleteComment(Long commentId) {
+        if(!commentRepository.existsById(commentId)){
+            throw new NullPointerException("NULL 값이 들어왔습니다.");
+        }
+        commentRepository.deleteById(commentId);
+    }
 }

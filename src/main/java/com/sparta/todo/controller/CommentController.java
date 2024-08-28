@@ -1,9 +1,6 @@
 package com.sparta.todo.controller;
 
-import com.sparta.todo.dto.comment.CommentDetailResponseDto;
-import com.sparta.todo.dto.comment.CommentSaveRequestDto;
-import com.sparta.todo.dto.comment.CommentSaveResponceDto;
-import com.sparta.todo.dto.comment.CommnetSimpleResponseDto;
+import com.sparta.todo.dto.comment.*;
 import com.sparta.todo.service.CommentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -32,8 +29,18 @@ public class CommentController {
     }
 
     //댓글 단건 조회
-    @GetMapping("todos/comments/{commentId}")
-    public CommentDetailResponseDto getDetailComments(@PathVariable Long commentId){
-        return commentService.getDetailComments(commentId);
+    @GetMapping("/todos/comments/{commentId}")
+    public ResponseEntity<CommentDetailResponseDto> getDetailComments(@PathVariable Long commentId){
+        return ResponseEntity.ok(commentService.getDetailComments(commentId));
+    }
+
+    @PutMapping("/todos/comments/{commentId}")
+    public ResponseEntity<CommentUpdateResponseDto> updateComments(@PathVariable Long commentId, @RequestBody CommentUpdateRequestDto commentUpdateRequestDto){
+        return ResponseEntity.ok(commentService.updateComments(commentId,commentUpdateRequestDto));
+    }
+
+    @DeleteMapping("/todos/comments/{commentId}")
+    public void deleteComment(@PathVariable Long commentId){
+        commentService.deleteComment(commentId);
     }
 }
