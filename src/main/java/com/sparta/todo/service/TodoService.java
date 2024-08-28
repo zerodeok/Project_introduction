@@ -4,8 +4,13 @@ import com.sparta.todo.dto.todo.*;
 import com.sparta.todo.entity.Todo;
 import com.sparta.todo.repository.TodoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -43,5 +48,12 @@ public class TodoService {
             throw new NullPointerException("NULL 값이 들어왔습니다.");
         }
         todoRepository.deleteById(todoId);
+    }
+
+
+    public Page<TodoDetailResponseDto> getTodos(PageRequest pageRequest) {
+
+        return todoRepository.findAll(pageRequest) // todo
+                .map(TodoDetailResponseDto::new);
     }
 }

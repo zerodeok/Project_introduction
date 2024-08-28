@@ -4,6 +4,9 @@ import com.sparta.todo.dto.todo.*;
 import com.sparta.todo.repository.TodoRepository;
 import com.sparta.todo.service.TodoService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +26,16 @@ public class TodoController {
     public ResponseEntity<TodoDetailResponseDto> getTodo(@PathVariable Long todoId){
         return ResponseEntity.ok(todoService.getTodo(todoId));
     }
+
+    @GetMapping("/todos")
+    public ResponseEntity<Page<TodoDetailResponseDto>> getTodos(
+            @RequestParam(defaultValue = "1",required = false) int page,
+            @RequestParam(defaultValue = "10",required = false) int size
+            ){
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.DESC, "updated_at");
+        return ResponseEntity.ok(todoService.getTodos(pageRequest));
+    }
+
 
     @PutMapping("/todos/{todoId}")
     public ResponseEntity<TodoUpdateResponseDto> updateTodo(@PathVariable Long todoId, @RequestBody TodoUpdateRequestDto todoUpdateRequestDto){
