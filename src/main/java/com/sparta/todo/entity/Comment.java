@@ -18,12 +18,12 @@ public class Comment extends Timestamped {
     private String userName;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "todo.todoId")
+    @JoinColumn(name = "todoId")
     private Todo todo;
 
     public Comment(String comment,String userName,Todo todo){
         this.comment = comment;
         this.userName = userName;
-//        this.todo = todo;
+        this.todo = todo;
     }
 }
