@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 public class TodoUpdateResponseDto {
 
 
-    private final Long id;
+    private final Long todoId;
     private final String userName;
     private final String title;
     private final String todo;
@@ -17,7 +17,7 @@ public class TodoUpdateResponseDto {
     private final LocalDateTime updated_at;
 
     public TodoUpdateResponseDto(Todo updateTodo) {
-        this.id = updateTodo.getId();
+        this.todoId = updateTodo.getTodoId();
         this.userName = updateTodo.getUserName();
         this.title = updateTodo.getTitle();
         this.todo = updateTodo.getTodo();

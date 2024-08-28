@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 public class TodoDetailResponseDto {
 
-    private final Long id;
+    private final Long todoId;
     private final String userName;
     private final String title;
     private final String todo;
@@ -17,7 +17,7 @@ public class TodoDetailResponseDto {
     private final LocalDateTime created_at;
 
     public TodoDetailResponseDto(Todo todo) {
-        this.id = todo.getId();
+        this.todoId = todo.getTodoId();
         this.userName = todo.getUserName();
         this.title = todo.getTitle();
         this.todo = todo.getTodo();

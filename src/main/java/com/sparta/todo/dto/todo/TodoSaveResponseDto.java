@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @Getter
 public class TodoSaveResponseDto {
 
-    private final Long id;
+    private final Long todoId;
     private final String userName;
     private final String title;
     private final String todo;
@@ -16,7 +16,7 @@ public class TodoSaveResponseDto {
     private final LocalDateTime updated_at;
 
     public TodoSaveResponseDto(Todo saveTodo) {
-        this.id = saveTodo.getId();
+        this.todoId = saveTodo.getTodoId();
         this.userName = saveTodo.getUserName();
         this.title = saveTodo.getTitle();
         this.todo = saveTodo.getTodo();
