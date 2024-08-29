@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @EntityListeners(AuditingEntityListener.class)
 public abstract class Timestamped {
 
-
+//시간을 자동으로 생성
     @CreatedDate
     @Column(name = "createdAt", updatable = false)
     @Temporal(TemporalType.TIMESTAMP)

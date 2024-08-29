@@ -15,6 +15,8 @@ public class CommentController {
 
     private final CommentService commentService;
 
+
+    //댓글 등록
     @PostMapping("/todos/{todoId}/comments")
     public ResponseEntity<CommentSaveResponceDto> saveComment(
             @PathVariable Long todoId,
@@ -34,11 +36,13 @@ public class CommentController {
         return ResponseEntity.ok(commentService.getDetailComments(commentId));
     }
 
+    //댓글 수정
     @PutMapping("/todos/comments/{commentId}")
     public ResponseEntity<CommentUpdateResponseDto> updateComments(@PathVariable Long commentId, @RequestBody CommentUpdateRequestDto commentUpdateRequestDto){
         return ResponseEntity.ok(commentService.updateComments(commentId,commentUpdateRequestDto));
     }
 
+    //댓글 삭제
     @DeleteMapping("/todos/comments/{commentId}")
     public void deleteComment(@PathVariable Long commentId){
         commentService.deleteComment(commentId);

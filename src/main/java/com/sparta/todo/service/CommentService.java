@@ -21,6 +21,7 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final TodoRepository todoRepository;
 
+    //id에 맞는 댓글 등록
     @Transactional
     public CommentSaveResponceDto saveComment(Long todoId, CommentSaveRequestDto commentSaveRequestDto) {
         Todo todo = todoRepository.findById(todoId).orElseThrow(() -> new NullPointerException("일정이 존재하지 않습니다."));
@@ -32,21 +33,19 @@ public class CommentService {
     }
 
 
-
+    //댓글 다건조회
     public List<CommnetSimpleResponseDto> getComments(Long todoId) {
         List<Comment> commentList = commentRepository.findByTodoTodoId(todoId);
 
         List<CommnetSimpleResponseDto> dtoList = new ArrayList<>();
         for (Comment comment : commentList) {
-            dtoList.add(new CommnetSimpleResponseDto(
-                    comment.getCommentId(),
-                    comment.getComment(),
-                    comment.getUserName()
+            dtoList.add(new CommnetSimpleResponseDto(comment
                     ));
         }
         return dtoList;
     }
 
+    //댓글 단건조회
     public CommentDetailResponseDto getDetailComments(Long commentId) {
         Comment comment = commentRepository.findById(commentId).orElseThrow(() -> new NullPointerException("댓글이 존재하지 않습니다."));
 
@@ -63,6 +62,7 @@ public class CommentService {
         return new CommentUpdateResponseDto(updateComment);
     }
 
+    //댓글 삭제
     @Transactional
     public void deleteComment(Long commentId) {
         if(!commentRepository.existsById(commentId)){

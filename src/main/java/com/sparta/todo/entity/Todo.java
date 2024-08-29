@@ -23,8 +23,8 @@ public class Todo extends Timestamped{
     private String userName;
     private String title;
     private String todo;
-    
-    @OneToMany(mappedBy = "todo",cascade = CascadeType.REMOVE)
+
+    @OneToMany(mappedBy = "todo",cascade = CascadeType.REMOVE)//영속성 전이 추가
     private List<Comment> comments = new ArrayList<>();
 
     public Todo(TodoSaveRequestDto todoSaveRequestDto){
