@@ -11,5 +11,5 @@ import java.util.List;
 
 @Repository
 public interface TodoRepository extends JpaRepository<Todo,Long> {
-
+    Page<Todo> findAllByOrderByUpdatedAtDesc(Pageable pageable);
 }

@@ -21,7 +21,7 @@ public class TodoUpdateResponseDto {
         this.userName = updateTodo.getUserName();
         this.title = updateTodo.getTitle();
         this.todo = updateTodo.getTodo();
-        this.created_at = updateTodo.getCreated_at();
-        this.updated_at = updateTodo.getUpdated_at();
+        this.created_at = updateTodo.getCreatedAt();
+        this.updated_at = updateTodo.getUpdatedAt();
     }
 }

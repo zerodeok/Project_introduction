@@ -19,7 +19,7 @@ public class CommentUpdateResponseDto {
         this.CommentId = comment.getCommentId();
         this.comment = comment.getComment();
         this.userName = comment.getUserName();
-        this.updated_at = comment.getUpdated_at();
-        this.created_at = comment.getCreated_at();
+        this.updated_at = comment.getUpdatedAt();
+        this.created_at = comment.getCreatedAt();
     }
 }

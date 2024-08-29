@@ -18,7 +18,7 @@ public class CommentDetailResponseDto {
         CommentId = comment.getCommentId();
         this.comment = comment.getComment();
         this.userName = comment.getUserName();
-        updated_at = comment.getUpdated_at();
-        created_at = comment.getCreated_at();
+        updated_at = comment.getUpdatedAt();
+        created_at = comment.getCreatedAt();
     }
 }

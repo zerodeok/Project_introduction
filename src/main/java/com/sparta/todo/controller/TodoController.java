@@ -32,8 +32,8 @@ public class TodoController {
             @RequestParam(defaultValue = "1",required = false) int page,
             @RequestParam(defaultValue = "10",required = false) int size
             ){
-        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.DESC, "updated_at");
-        return ResponseEntity.ok(todoService.getTodos(pageRequest));
+//        PageRequest pageRequest = PageRequest.of(page -1, size, Sort.Direction.DESC, "updated_at");
+        return ResponseEntity.ok(todoService.getTodos(page,size));
     }
 
 

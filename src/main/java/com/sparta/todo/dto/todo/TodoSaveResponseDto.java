@@ -20,7 +20,7 @@ public class TodoSaveResponseDto {
         this.userName = saveTodo.getUserName();
         this.title = saveTodo.getTitle();
         this.todo = saveTodo.getTodo();
-        this.created_at = saveTodo.getCreated_at();
-        this.updated_at = saveTodo.getUpdated_at();
+        this.created_at = saveTodo.getCreatedAt();
+        this.updated_at = saveTodo.getUpdatedAt();
     }
 }
